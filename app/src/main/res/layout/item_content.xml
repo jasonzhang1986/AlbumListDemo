@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_content_item_root"
+    android:layout_width="@dimen/dp_188"
+    android:layout_height="@dimen/dp_240"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/selector_item_content_bg"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_188"
+        android:layout_height="@dimen/dp_240"
+        android:background="@drawable/shape_list_item_bg"
+        android:minWidth="@dimen/dp_188"
+        android:minHeight="@dimen/dp_240"
+        >
+
+        <ImageView
+            android:id="@+id/iv_app"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_80"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@drawable/icon_app" />
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_app"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_25"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="知乎"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_28"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_app_download_count"
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_app_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="下载量：100万+"
+            android:textColor="#EEF5F8"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_app_size"
+            android:layout_width="@dimen/dp_180"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_app_download_count"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="大小：13.8MB"
+            android:textColor="#EEF5F8"
+            android:textSize="@dimen/sp_16" />
+    </RelativeLayout>
+</RelativeLayout>

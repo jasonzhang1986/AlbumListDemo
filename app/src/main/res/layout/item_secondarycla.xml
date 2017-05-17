@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_sub_album_root"
+    android:layout_width="@dimen/dp_108"
+    android:layout_height="@dimen/dp_40"
+    android:background="@drawable/selector_sub_album_item"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:focusable="true"
+    >
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="@dimen/dp_108"
+        android:layout_height="@dimen/dp_40"
+        android:textColor="@color/selector_text_album"
+        android:textSize="@dimen/sp_26"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:duplicateParentState="true"
+        />
+</LinearLayout>

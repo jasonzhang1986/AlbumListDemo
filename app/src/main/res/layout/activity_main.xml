@@ -6,7 +6,6 @@
     android:background="@drawable/store_bg"
     android:clipChildren="false"
     android:orientation="horizontal"
-
     >
     <LinearLayout
         android:id="@+id/layout_left_root"
@@ -90,7 +89,6 @@
             android:orientation="horizontal"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:layout_marginTop="@dimen/dp_21"
             android:background="@drawable/selector_item_bg"
             >
             <View
@@ -132,7 +130,6 @@
             android:orientation="horizontal"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:layout_marginTop="@dimen/dp_21"
             android:background="@drawable/selector_item_bg"
             >
             <View
@@ -174,8 +171,8 @@
             android:orientation="horizontal"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:layout_marginTop="@dimen/dp_21"
             android:background="@drawable/selector_item_bg"
+            android:nextFocusDown="@id/layout_parts"
             >
             <View
                 android:id="@+id/space_select_parts"
@@ -225,17 +222,15 @@
             android:textStyle="bold"
             android:textSize="@dimen/sp_36"
             android:textColor="#eef5f8"
-            android:layout_marginTop="@dimen/dp_22"
             android:layout_marginLeft="@dimen/dp_80"
             android:visibility="gone"
             />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_secondary_classification"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_40"
             android:layout_marginTop="@dimen/dp_106"
             android:layout_marginLeft="@dimen/dp_80"
-            android:layout_marginRight="@dimen/dp_80"
             />
         <FrameLayout
             android:layout_width="match_parent"

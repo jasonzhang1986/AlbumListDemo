@@ -50,10 +50,10 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         mContentList.setLayoutManager(new GridLayoutManager(this, 5));
         int space = getResources().getDimensionPixelOffset(R.dimen.dp_20);
         Log.i("MainActivity","space = " + space);
-        mContentList.addItemDecoration(new SpaceItemDecoration(space, 5));
+        mContentList.setSpace(space);
         ContentListAdapter contentListAdapter = new ContentListAdapter();
         mContentList.setAdapter(contentListAdapter);
-        mContentList.setScrollOffset((int)(getResources().getDimensionPixelOffset(R.dimen.dp_240)*0.2f));
+
     }
 
     @OnFocusChange({R.id.layout_app, R.id.layout_game, R.id.layout_music, R.id.layout_parts, R.id.list_secondary_classification, R.id.list_content})

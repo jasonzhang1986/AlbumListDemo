@@ -2,10 +2,13 @@ package me.jifengzhang.albumlistdemo;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 
 /**
  * Author: Jifeng Zhang
@@ -15,6 +18,7 @@ import android.util.Log;
  */
 
 public class CustomRecycleView extends RecyclerView {
+    private int space = 0;
     public CustomRecycleView(Context context) {
         super(context);
         init();
@@ -33,20 +37,33 @@ public class CustomRecycleView extends RecyclerView {
         //启用子视图排序功能
         setChildrenDrawingOrderEnabled(true);
     }
-    private int offset = 0;
-    public void setScrollOffset(int offset) {
-        this.offset = offset;
-    }
 
+    public void setSpace(int space) {
+        LayoutManager layoutManager = getLayoutManager();
+        if (layoutManager==null || !(layoutManager instanceof GridLayoutManager)) {
+            throw new IllegalStateException("GridLayoutManager must be set!!");
+        }
+        this.space = space;
+        if (space>0) {
+            addItemDecoration(new SpaceItemDecoration(space, ((GridLayoutManager) layoutManager).getSpanCount()));
+        }
+    }
     @Override
     public void smoothScrollBy(int dx, int dy) {
-        Log.i("CustomRecycleView","smoothScrollBy " + getResources().getDimensionPixelOffset(R.dimen.dp_240));
-        if (dy > 0) {
-            super.smoothScrollBy(dx, getResources().getDimensionPixelOffset(R.dimen.dp_240)*2 +getResources().getDimensionPixelOffset(R.dimen.dp_20)*2);
-        } else if (dy < 0) {
-            super.smoothScrollBy(dx, -(getResources().getDimensionPixelOffset(R.dimen.dp_240)*2 +getResources().getDimensionPixelOffset(R.dimen.dp_20)*2));
-        } else {
+        View focusView = getFocusedChild();
+        if (focusView==null) {
             super.smoothScrollBy(dx, dy);
+        } else {
+            int itemHeight = focusView.getMeasuredHeight();
+            int visibleCompleteLine = getMeasuredHeight() / (itemHeight + space);
+            int distance = (itemHeight + space) * visibleCompleteLine;
+            if (dy > 0) {
+                super.smoothScrollBy(dx, distance);
+            } else if (dy < 0) {
+                super.smoothScrollBy(dx, -distance);
+            } else {
+                super.smoothScrollBy(dx, dy);
+            }
         }
     }
     private int mSelectedPosition = 0;
@@ -72,5 +89,30 @@ public class CustomRecycleView extends RecyclerView {
             }
         }
         return i;
+    }
+
+    public class SpaceItemDecoration extends RecyclerView.ItemDecoration {
+        private int space, spanCount = 1;
+        public SpaceItemDecoration(int space, int spanCount) {
+            this.space = space;
+            this.spanCount = spanCount;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.right = space;
+            outRect.bottom = space;
+            int lastLineCount = parent.getAdapter().getItemCount() % spanCount;
+            if(lastLineCount==0) {
+                lastLineCount = spanCount;
+            }
+            if (parent.getChildLayoutPosition(view)>= parent.getAdapter().getItemCount()- lastLineCount) {
+                int recycleHeight = parent.getMeasuredHeight();
+                int viewHeight = view.getMeasuredHeight();
+                int bottomSpace = recycleHeight % (viewHeight+space);
+                Log.i("SpaceItemDecoration","recycleHeight = " + recycleHeight + ", viewHeight = " + viewHeight + ", bottomSpace = " + bottomSpace);
+                outRect.bottom = bottomSpace + space;
+            }
+        }
     }
 }

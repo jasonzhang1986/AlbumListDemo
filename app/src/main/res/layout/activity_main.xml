@@ -223,10 +223,11 @@
             android:textSize="@dimen/sp_36"
             android:textColor="#eef5f8"
             android:layout_marginLeft="@dimen/dp_80"
+            android:layout_marginTop="@dimen/dp_17"
             android:visibility="gone"
             />
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/list_secondary_classification"
+            android:id="@+id/list_sub_category"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_40"
             android:layout_marginTop="@dimen/dp_106"
@@ -235,11 +236,11 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/list_secondary_classification"
+            android:layout_below="@id/list_sub_category"
             android:clipToPadding="false"
             android:clipChildren="false"
             >
-            <me.jifengzhang.albumlistdemo.CustomRecycleView
+            <me.jifengzhang.albumlistdemo.GridRecycleView
                 android:id="@+id/list_content"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

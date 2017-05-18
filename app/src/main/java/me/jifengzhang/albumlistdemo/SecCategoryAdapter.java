@@ -15,7 +15,7 @@ import java.util.List;
  * Desc  : 二级分类的Adapter
  */
 
-public class SecondaryClassificationAdapter extends RecyclerView.Adapter<SecondaryClassificationAdapter.ViewHolder>{
+public class SecCategoryAdapter extends RecyclerView.Adapter<SecCategoryAdapter.ViewHolder>{
     private List<String> mData;
     private View.OnFocusChangeListener mOnFocusChangeListener;
     @Override

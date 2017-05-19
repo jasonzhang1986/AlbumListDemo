@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
     @BindView(R.id.tv_title) TextView mText_Title;
     @BindView(R.id.tv_title_right) TextView mText_Title_Right;
 
-    @BindView(R.id.list_sub_category) RecyclerView mSubCategoryList;
+    @BindView(R.id.list_sub_category) LinearRecycleView mSubCategoryList;
     @BindView(R.id.list_content) GridRecycleView mContentList;
 
     private View mLastSelectItem = null;
@@ -42,6 +42,7 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
         ButterKnife.bind(this);
         mCurViewInFirstCategory = mLayoutApp;
         mSubCategoryList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mSubCategoryList.setSpace(getResources().getDimensionPixelOffset(R.dimen.dp_8));
         SecCategoryAdapter adapter = new SecCategoryAdapter();
         adapter.setData(Arrays.asList(data));
         adapter.setOnFocusChangeListener(this);

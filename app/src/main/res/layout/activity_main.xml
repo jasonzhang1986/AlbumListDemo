@@ -226,7 +226,7 @@
             android:layout_marginTop="@dimen/dp_17"
             android:visibility="gone"
             />
-        <android.support.v7.widget.RecyclerView
+        <me.jifengzhang.albumlistdemo.LinearRecycleView
             android:id="@+id/list_sub_category"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_40"
